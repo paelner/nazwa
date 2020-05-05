@@ -9,32 +9,35 @@ public class Main {
         me.pet = new Animal("moose");
         me.pet.name = "Kłębek";
 
-        Animal dog = new Animal ("dog");
+        Animal dog = new Animal("dog");
         dog.name = "Akita";
         me.pet = dog;
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.TakeForAWalk();
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.feed();
+        me.setSalary(-20000.0);
+        me.setSalary(20000.0);
+
+//        me.pet.feed();
+//        me.pet.feed();
+//        me.pet.feed();
+//        me.pet.feed();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.TakeForAWalk();
+//        me.pet.feed();
+//        me.pet.feed();
+//        me.pet.feed();
 
 
     }
