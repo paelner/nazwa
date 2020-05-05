@@ -34,6 +34,7 @@ public class Main {
         me.pet.TakeForAWalk();
         me.pet.feed();
         me.pet.feed();
+        me.pet.feed();
 
 
 
