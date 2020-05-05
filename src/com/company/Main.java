@@ -12,5 +12,34 @@ public class Main {
         Animal dog = new Animal ("dog");
         dog.name = "Akita";
         me.pet = dog;
+        me.pet.feed();
+        me.pet.feed();
+        me.pet.feed();
+        me.pet.feed();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.TakeForAWalk();
+        me.pet.feed();
+        me.pet.feed();
+
+
+
+
+
+
         }
+
 }
