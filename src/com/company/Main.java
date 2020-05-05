@@ -12,9 +12,11 @@ public class Main {
         Animal dog = new Animal("dog");
         dog.name = "Akita";
         me.pet = dog;
-        me.setSalary(-20000.0);
-        me.setSalary(20000.0);
+        me.setSalary(30000.0);
+        Car passeratti = new Car("Volkswagen", "Passeratti", 2.0, 2012, "Green");
 
+        me.setCar(passeratti);
+        System.out.println("My car is: " + me.getCar().model);
 //        me.pet.feed();
 //        me.pet.feed();
 //        me.pet.feed();

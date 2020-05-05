@@ -34,20 +34,19 @@ public class Human {
 //        }
 
 
-//    public Car getCar(){
-//        return car;
-//    }
-//    public void setCar(Car car){
-//        if(this.salary > car.value) {
-//            System.out.println("Bought this car with cash");
-//            this.car = car;
-//        }
-//        else if(this.salary>car.value/12){
-//        System.out.println("Bought this car on an installment plan");
-//        this.car = car;
-//        }else
-//        {
-//            System.out.println("you can't afford it :(");
-//       }
-//    }
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        if (this.salary > car.value) {
+            System.out.println("Bought this car with cash");
+            this.car = car;
+        } else if (this.salary > car.value / 12) {
+            System.out.println("Bought this car on an installment plan");
+            this.car = car;
+        } else {
+            System.out.println("you can't afford it :(");
+        }
+    }
 }
