@@ -10,7 +10,7 @@ public class Animal {
     public static final Double DEFAULT_LION_WEIGHT = 180.0;
 
 
-    public Animal(String species) {
+    public Animal(String species, Double weight, String name) {
         this.species = species;
         if (species == "lion") {
             this.weight = DEFAULT_LION_WEIGHT;
@@ -19,6 +19,8 @@ public class Animal {
         } else if (species == "dog") {
             this.weight = DEFAULT_DOG_WEIGHT;
         }
+        this.weight = weight;
+        this.name = name;
     }
 
 
@@ -44,4 +46,12 @@ public class Animal {
 
     }
 
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "species='" + species + '\'' +
+                ", weight=" + weight +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,10 @@
 package com.company;
 
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+
 public class Human {
     String firstName;
     String lastName;
@@ -9,10 +14,14 @@ public class Human {
     private Double salary = 0.0;
     private Car car;
 
-    public Double getSalary() {
-        System.out.println("Your previous salary was: " + lastSalary);
-        System.out.println("Your current salary accounted and its: " + salary);
-        return this.salary;
+    public Human(String firstName, String lastName, Phone phone, Animal pet, Double lastSalary, Double salary, Car car) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.pet = pet;
+        this.lastSalary = lastSalary;
+        this.salary = salary;
+        this.car = car;
     }
 
 
@@ -23,6 +32,7 @@ public class Human {
         } else
             System.out.println("You cannot put negative values here");
     }
+
 
 
     public Car getCar() {
@@ -39,5 +49,25 @@ public class Human {
         } else {
             System.out.println("you can't afford it :(");
         }
+    }
+
+    public Double getSalary() {
+        System.out.println("Your previous salary was: " + lastSalary);
+        System.out.println("Your current salary accounted and its: " + salary + " Date: " + date());
+        return this.salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone=" + phone +
+                ", pet=" + pet +
+                ", lastSalary=" + lastSalary +
+                ", salary=" + salary +
+                ", car=" + car +
+                '}';
+
     }
 }
