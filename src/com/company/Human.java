@@ -5,33 +5,24 @@ public class Human {
     String lastName;
     Phone phone;
     Animal pet;
-    //    private Double lastSalary;
-    private Double salary;
+    private Double lastSalary = 0.0;
+    private Double salary = 0.0;
     private Car car;
 
     public Double getSalary() {
-        return salary;
+        System.out.println("Your previous salary was: " + lastSalary);
+        System.out.println("Your current salary accounted and its: " + salary);
+        return this.salary;
     }
 
 
     public void setSalary(Double salary) {
         if (salary >= 0) {
-            System.out.println("Your current salary accounted and its: " + salary);
+            this.lastSalary = this.salary;
             this.salary = salary;
-        } else {
+        } else
             System.out.println("You cannot put negative values here");
-        }
-
     }
-//    public void setLastSalary(Double lastSalary){
-//        lastSalary =-getSalary();
-//        if (lastSalary==null){
-//            System.out.println("It's your first salary");
-//        }else
-//        {
-//            System.out.println("Your last salary was: "+ lastSalary);
-//        }
-//        }
 
 
     public Car getCar() {
