@@ -1,10 +1,7 @@
 package com.company.devices;
 
-public class Phone {
-    public final String model;
-    public final String producer;
+public class Phone extends Device {
     public final Double screenSize;
-    public final Integer yearOfProduction;
     public final String color;
     public Double value;
 
@@ -29,5 +26,11 @@ public class Phone {
                 ", color='" + color + '\'' +
                 ", value=" + value +
                 '}';
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("Device " + model + " is turned on");
+
     }
 }

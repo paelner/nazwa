@@ -1,11 +1,8 @@
 package com.company.devices;
 
 
-public class Car {
-    public final String model;
-    public final String producer;
+public class Car extends Device {
     public final Double engineCapacity;
-    public final Integer yearOfProduction;
     public final String color;
     public Double value;
 
@@ -60,5 +57,11 @@ public class Car {
         result = 31 * result + color.hashCode();
         result = 31 * result + value.hashCode();
         return result;
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("Device " + model + " is turned on");
+
     }
 }
