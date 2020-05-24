@@ -1,6 +1,8 @@
 package com.company.devices;
 
 
+import com.company.Human;
+
 public class Car extends Device {
     public final Double engineCapacity;
     public final String color;
@@ -62,6 +64,25 @@ public class Car extends Device {
     @Override
     public void turnOn() {
         System.out.println("Device " + model + " is turned on");
+
+    }
+
+
+    @Override
+    public void Sell(Human seller, Human buyer, Double prize) {
+
+        if (buyer.getCash() >= prize) {
+            if (seller.getCar() == this) {
+                buyer.setCar(seller.getCar());
+                seller.setCash(seller.getCash() + prize);
+                buyer.setCash(buyer.getCash() - prize);
+                System.out.println("Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" + "Current cash of " + seller.firstName + " is now: " + seller.getCash());
+            } else {
+                System.out.println(seller.firstName + " doesn't have this car ");
+            }
+        } else {
+            System.out.println(buyer.firstName + " doesn't have the amount of money");
+        }
 
     }
 }

@@ -5,20 +5,23 @@ import com.company.devices.Phone;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 
-public class Human {
-    String firstName;
+public class Human implements Saleable {
+
+    public String firstName;
     String lastName;
     Phone phone;
     Animal pet;
+    private Double cash = 0.0;
     private Double lastSalary = 0.0;
     private Double salary = 0.0;
     private Car car;
 
-    public Human(String firstName, String lastName, Phone phone, Animal pet, Double lastSalary, Double salary, Car car) {
+    public Human(String firstName, String lastName, Phone phone, Animal pet, Double cash, Double lastSalary, Double salary, Car car) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.pet = pet;
+        this.cash = cash;
         this.lastSalary = lastSalary;
         this.salary = salary;
         this.car = car;
@@ -51,9 +54,26 @@ public class Human {
         }
     }
 
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
+
+    public Animal getPet() {
+        return pet;
+    }
+
+    public void setPet(Animal animal) {
+        this.pet = pet;
+
+    }
+
     public Double getSalary() {
         System.out.println("Your previous salary was: " + lastSalary);
-        System.out.println("Your current salary accounted and its: " + salary + " Date: " + date());
+        System.out.println("Your current salary accounted and its: " + salary + " Current date: " + date());
         return this.salary;
     }
 
@@ -64,10 +84,26 @@ public class Human {
                 ", lastName='" + lastName + '\'' +
                 ", phone=" + phone +
                 ", pet=" + pet +
+                ", cash=" + cash +
                 ", lastSalary=" + lastSalary +
                 ", salary=" + salary +
                 ", car=" + car +
                 '}';
 
     }
+
+    @Override
+    public void Sell(Human seller, Human buyer, Double prize) {
+        System.out.println("Slavery is forbidden");
+    }
+
+
+    public Double getCash() {
+        return cash;
+    }
+
+    public void setCash(double cash) {
+        this.cash = cash;
+    }
+
 }
