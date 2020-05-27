@@ -1,6 +1,9 @@
-package com.company;
+package com.company.creatures;
 
-public class Animal implements Pet, Saleable {
+import com.company.Human;
+import com.company.Saleable;
+
+public abstract class Animal implements Saleable, Feedable {
     final String species;
     private Double weight;
     public String name;
@@ -24,18 +27,6 @@ public class Animal implements Pet, Saleable {
     }
 
 
-    void feed() {
-        if (weight > 0.0) {
-            weight++;
-            System.out.println("Thank you for the food,my weight is now " + weight + " kg");
-        } else {
-            System.out.println("good luck feeding him now");
-        }
-
-
-    }
-
-
     void TakeForAWalk() {
         weight--;
         if (weight > 0.0) {
@@ -44,6 +35,53 @@ public class Animal implements Pet, Saleable {
             System.out.println("Your pet is dead, I hope  you are proud of yourself :)");
         }
 
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public void feed() {
+        System.out.println("You feed this animal ");
+    }
+
+
+    public static class Pet extends Animal {
+        public Pet(String species, Double weight, String name) {
+            super(species, weight, name);
+        }
+
+        @Override
+        public void feed(Double foodWeight) {
+            setWeight(getWeight() + foodWeight);
+            System.out.println("You feed this animal with " + foodWeight + " of food and it's weight is now: " + getWeight());
+        }
+
+
+    }
+
+
+    public static class FarmAnimal extends Animal implements Edible {
+        public FarmAnimal(String species, Double weight, String name) {
+            super(species, weight, name);
+
+        }
+
+        @Override
+        public void beEaten() {
+            System.out.println("This FarmAnimal can be eaten ");
+        }
+
+        @Override
+        public void feed(Double foodWeight) {
+            setWeight(getWeight() + foodWeight);
+            System.out.println("You feed this animal with " + foodWeight + " of food and it's weight is now: " + getWeight());
+        }
     }
 
     @Override

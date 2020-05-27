@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 public class Main {
@@ -9,11 +10,11 @@ public class Main {
         Phone iphone11 = new Phone("iphone 11", " apple", 6.1, 2019, "White", 2.100);
         Phone siajomi = new Phone("redmi note 8", "xiaomi", 6.53, 2019, "Black", 2.000);
         Car passeratti = new Car("Passeratti", "Volkswagen", 2.0, 2012, "Green");
-        Animal moose = new Animal("moose", Animal.DEFAULT_MOOSE_WEIGHT, "Kłębek");
+        Animal.Pet moose = new Animal.Pet("moose", Animal.DEFAULT_MOOSE_WEIGHT, "Kłębek");
         Human me = new Human("Paweł", "Nerkowski", siajomi, moose, 10000.0, 10000.0, 10000.0, passeratti);
         Car bentley = new Car("Mulsanne", "Bentley", 6.8, 2020, "Orange");
-        Animal dog = new Animal("dog", Animal.DEFAULT_DOG_WEIGHT, "Akita");
-
+        Animal.Pet dog = new Animal.Pet("dog", Animal.DEFAULT_DOG_WEIGHT, "Akita");
+        Animal.FarmAnimal cow = new Animal.FarmAnimal("cow", 200.0, "Krasula");
 //        me.setSalary(-1000.0);
 //        me.setSalary(20000.0);
 
@@ -56,13 +57,15 @@ public class Main {
 //        me.pet.feed();
 //        me.pet.feed();
 //        me.pet.feed();
-
-        Adam.getSalary();
-        Adam.Sell(Adam, me, 200.0);
-        iphone11.Sell(Damian, Adam, 2000.0);
-        bentley.Sell(Damian, me, 2.0);
-        siajomi.Sell(Damian, me, 1000.0);
-        moose.Sell(me, Damian, 20.0);
+        moose.feed(10.0);
+        cow.feed();
+        cow.beEaten();
+//        Adam.getSalary();
+//        Adam.Sell(Adam, me, 200.0);
+//        iphone11.Sell(Damian, Adam, 2000.0);
+//        bentley.Sell(Damian, me, 2.0);
+//        siajomi.Sell(Damian, me, 1000.0);
+//        moose.Sell(me, Damian, 20.0);
 
     }
 
