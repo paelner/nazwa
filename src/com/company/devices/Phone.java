@@ -3,10 +3,16 @@ package com.company.devices;
 import com.company.Human;
 import com.company.Saleable;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class Phone extends Device implements Saleable {
     public final Double screenSize;
     public final String color;
     public Double value;
+    private static final String DEFAULT_APP_PROTOCOL = "HTTPS";
+    private static final String DEFAULT_APP_SERVER = "me.appstore.com";
+    private static final int DEFAULT_PORT_NUMBER = 443;
 
 
     public Phone(String model, String producer, Double screenSize, Integer yearOfProduction, String color, Double value) {
@@ -17,6 +23,37 @@ public class Phone extends Device implements Saleable {
         this.color = color;
         this.value = 200.0;
 
+    }
+
+    public void installAnApp(String[] names) throws Exception {
+        System.out.println("instalowanie aplikacji na podstawie tablicy nazw");
+        if (names.length == 0) {
+            throw new Exception("nie podano żadnych plikacji");
+        }
+        for (String name : names) {
+            this.installAnApp(name);
+        }
+    }
+
+    public void installAnApp(String name) throws Exception {
+        System.out.println("instalowanie aplikacji na podstawie nazwy");
+        if (name.equals("")) {
+            throw new Exception("aplikacja musi mieć nazwę");
+        }
+        this.installAnApp(name, "latest");
+    }
+
+    public void installAnApp(String name, String version) throws MalformedURLException {
+        System.out.println("instalowanie aplikacji na podstawie nazwy i wersji");
+
+        URL url = new URL(DEFAULT_APP_PROTOCOL, DEFAULT_APP_SERVER, DEFAULT_PORT_NUMBER, name + "-" + version);
+        this.installAnApp(url);
+    }
+
+    public void installAnApp(URL url) {
+        System.out.println("instalowanie aplikacji na podstawie url");
+
+        System.out.println("poprawnie zainstalowano " + url.getFile() + " z serwera " + url.getHost());
     }
 
     @Override

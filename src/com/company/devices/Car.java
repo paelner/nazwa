@@ -3,7 +3,7 @@ package com.company.devices;
 
 import com.company.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     public final Double engineCapacity;
     public final String color;
     public Double value;
@@ -28,6 +28,55 @@ public class Car extends Device {
                 ", value=" + value +
                 '}';
     }
+
+    public abstract void refuel(Double fuel);
+
+    public static class Electric extends Car {
+
+        public Electric(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color) {
+            super(model, producer, engineCapacity, yearOFProduction, color);
+
+        }
+
+
+        @Override
+        public void refuel(Double charge) {
+
+            System.out.println("Naladowales elektryczny samochod  " + this.model + " o " + charge + " MJ");
+        }
+
+
+    }
+
+    public static class Disel extends Car {
+
+        public Disel(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color) {
+            super(model, producer, engineCapacity, yearOFProduction, color);
+        }
+
+        @Override
+        public void refuel(Double fuel) {
+            System.out.println("Napelniles bak samochodu " + this.model + " o " + fuel + " litrow paliwa");
+        }
+
+
+    }
+
+    public static class LPG extends Car {
+
+        public LPG(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color) {
+            super(model, producer, engineCapacity, yearOFProduction, color);
+        }
+
+        @Override
+        public void refuel(Double gas) {
+
+            System.out.println("Napelniles butle " + this.model + " o " + gas + " litrow gazu");
+        }
+
+
+    }
+
 
     @Override
     public boolean equals(Object object) {
