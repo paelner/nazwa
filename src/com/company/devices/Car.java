@@ -1,21 +1,36 @@
 package com.company.devices;
 
-
 import com.company.Human;
+import com.company.Saleable;
 
-public abstract class Car extends Device {
+import java.util.Comparator;
+import java.util.Scanner;
+
+public abstract class Car extends Device implements Saleable, Comparator<Car> {
+
     public final Double engineCapacity;
     public final String color;
-    public Double value;
 
+    Scanner scan = new Scanner(System.in);
+    int buyerParking = 0;
+    int sellerParking;
 
-    public Car(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color) {
+    public Car(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
         this.model = model;
         this.producer = producer;
         this.engineCapacity = engineCapacity;
         this.yearOfProduction = yearOFProduction;
         this.color = color;
-        this.value = 10000.0;
+        this.value = value;
+    }
+
+
+    public void setCarValue() {
+        this.value = value;
+    }
+
+    public Double getCarValue() {
+        return value;
     }
 
     public String toString() {
@@ -31,10 +46,53 @@ public abstract class Car extends Device {
 
     public abstract void refuel(Double fuel);
 
+    @Override
+    public int compare(Car o1, Car o2) {
+        if (o2 == null) return -1;
+        if (o1 == null) return -1;
+        if (o1.yearOfProduction > o2.yearOfProduction) return 1;
+        else if (o1.yearOfProduction < o2.yearOfProduction) return -1;
+        else return 0;
+    }
+
+    @Override
+    public void Sell(Human seller, Human buyer, Double prize) throws Exception {
+
+        if (seller.getCar(sellerParking) != this)
+            throw new Exception("Te miejsce jest puste");
+
+
+        if (buyer.getCash() >= prize && seller.getCar(sellerParking) == this) {
+
+            seller.setCash(seller.getCash() + prize);
+            buyer.setCash(buyer.getCash() - prize);
+
+
+            while (buyer.getCar(buyerParking) != null) {
+                if (buyer.getCar(buyerParking) == null) {
+                    break;
+                }
+                if ((buyer.garage.length - 1) == buyerParking && buyer.getCar(buyer.garage.length - 1) != null) {
+                    throw new Exception("Wszystkie miejsca parkingowe są zajęte");
+                }
+                buyerParking = buyerParking + 1;
+            }
+            if (buyer.getCar(buyerParking) == null) {
+                buyer.setCar(buyerParking, this);
+                seller.setCar(sellerParking, null);
+                System.out.println(
+                        "Transakcja przebiegła pomyślnie " + "\n" +
+                                "Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" +
+                                "Current cash of " + seller.firstName + " is now: " + seller.getCash());
+            }
+        } else throw new
+                Exception(buyer.firstName + " nie ma tyle pieniędzy");
+    }
+
     public static class Electric extends Car {
 
-        public Electric(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color) {
-            super(model, producer, engineCapacity, yearOFProduction, color);
+        public Electric(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
+            super(model, producer, engineCapacity, yearOFProduction, color, value);
 
         }
 
@@ -43,35 +101,6 @@ public abstract class Car extends Device {
         public void refuel(Double charge) {
 
             System.out.println("Naladowales elektryczny samochod  " + this.model + " o " + charge + " MJ");
-        }
-
-
-    }
-
-    public static class Disel extends Car {
-
-        public Disel(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color) {
-            super(model, producer, engineCapacity, yearOFProduction, color);
-        }
-
-        @Override
-        public void refuel(Double fuel) {
-            System.out.println("Napelniles bak samochodu " + this.model + " o " + fuel + " litrow paliwa");
-        }
-
-
-    }
-
-    public static class LPG extends Car {
-
-        public LPG(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color) {
-            super(model, producer, engineCapacity, yearOFProduction, color);
-        }
-
-        @Override
-        public void refuel(Double gas) {
-
-            System.out.println("Napelniles butle " + this.model + " o " + gas + " litrow gazu");
         }
 
 
@@ -116,22 +145,33 @@ public abstract class Car extends Device {
 
     }
 
+    public static class Diesel extends Car {
 
-    @Override
-    public void Sell(Human seller, Human buyer, Double prize) {
-
-        if (buyer.getCash() >= prize) {
-            if (seller.getCar() == this) {
-                buyer.setCar(seller.getCar());
-                seller.setCash(seller.getCash() + prize);
-                buyer.setCash(buyer.getCash() - prize);
-                System.out.println("Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" + "Current cash of " + seller.firstName + " is now: " + seller.getCash());
-            } else {
-                System.out.println(seller.firstName + " doesn't have this car ");
-            }
-        } else {
-            System.out.println(buyer.firstName + " doesn't have the amount of money");
+        public Diesel(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
+            super(model, producer, engineCapacity, yearOFProduction, color, value);
         }
+
+        @Override
+        public void refuel(Double fuel) {
+            System.out.println("Napelniles bak samochodu " + this.model + " o " + fuel + " litrow paliwa");
+        }
+
+
+    }
+
+    public static class LPG extends Car {
+
+        public LPG(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
+            super(model, producer, engineCapacity, yearOFProduction, color, value);
+        }
+
+        @Override
+        public void refuel(Double gas) {
+
+            System.out.println("Napelniles butle " + this.model + " o " + gas + " litrow gazu");
+        }
+
 
     }
 }
+

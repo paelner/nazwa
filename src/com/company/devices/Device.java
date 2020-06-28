@@ -7,6 +7,8 @@ public abstract class Device implements Saleable {
     public String model;
     public String producer;
     public Integer yearOfProduction;
+    public Double value;
+
 
     @Override
     public String toString() {

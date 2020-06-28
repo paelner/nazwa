@@ -4,9 +4,12 @@ import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 
-public class Human implements Saleable {
+public class Human implements Saleable, Comparator<Car> {
 
     public String firstName;
     String lastName;
@@ -15,9 +18,10 @@ public class Human implements Saleable {
     private Double cash = 0.0;
     private Double lastSalary = 0.0;
     private Double salary = 0.0;
-    private Car car;
+    public static final Integer DEFAULT_PARKING_SPACE = 2;
+    public Car[] garage;
 
-    public Human(String firstName, String lastName, Phone phone, Animal pet, Double cash, Double lastSalary, Double salary, Car car) {
+    public Human(String firstName, String lastName, Phone phone, Animal pet, Double cash, Double lastSalary, Double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -25,7 +29,8 @@ public class Human implements Saleable {
         this.cash = cash;
         this.lastSalary = lastSalary;
         this.salary = salary;
-        this.car = car;
+        garage = new Car[DEFAULT_PARKING_SPACE];
+
     }
 
 
@@ -37,22 +42,30 @@ public class Human implements Saleable {
             System.out.println("You cannot put negative values here");
     }
 
+//I i
 
+    public Car getCar(Integer parkingSpaceNumber) {
 
-    public Car getCar() {
-        return car;
+        return garage[parkingSpaceNumber];
+
     }
 
-    public void setCar(Car car) {
-        if (this.salary > car.value) {
-            System.out.println("Bought this car with cash");
-            this.car = car;
-        } else if (this.salary > car.value / 12) {
-            System.out.println("Bought this car on an installment plan");
-            this.car = car;
-        } else {
-            System.out.println("you can't afford it :(");
+
+    public void setCar(Integer parkingSpaceNumber, Car car) {
+
+        garage[parkingSpaceNumber] = car;
+    }
+
+    public double garageCarsValue() {
+
+        double value = 0;
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] != null) {
+                value = garage[i].value + value;
+            }
         }
+        System.out.println("Wartosc garazu " + this.firstName + " to: " + value);
+        return value;
     }
 
     public Phone getPhone() {
@@ -79,6 +92,17 @@ public class Human implements Saleable {
     }
 
     @Override
+    public int compare(Car o1, Car o2) {
+        {
+            if (o2 == null) return -1;
+            if (o1 == null) return -1;
+            if (o1.yearOfProduction > o2.yearOfProduction) return 1;
+            else if (o1.yearOfProduction < o2.yearOfProduction) return -1;
+            else return 0;
+        }
+    }
+
+    @Override
     public String toString() {
         return "Human{" +
                 "firstName='" + firstName + '\'' +
@@ -88,9 +112,17 @@ public class Human implements Saleable {
                 ", cash=" + cash +
                 ", lastSalary=" + lastSalary +
                 ", salary=" + salary +
-                ", car=" + car +
                 '}';
 
+    }
+
+    public void sortCar() {
+        Arrays.sort(garage, this);
+    }
+
+    public void showCars() {
+        for (Car c : garage)
+            System.out.println(c);
     }
 
     @Override
@@ -106,5 +138,6 @@ public class Human implements Saleable {
     public void setCash(double cash) {
         this.cash = cash;
     }
+
 
 }
