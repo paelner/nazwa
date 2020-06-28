@@ -32,28 +32,31 @@ public class Main {
         System.out.println(Arrays.toString(numbers));
         me.phone.installAnApp(apps);
 //        me.setCar(1,zentorno);
-        me.setCar(0, bentley);
+//        me.setCar(0, bentley);
 //        me.setCar(2,passeratti);
-        Human Adam = new Human("Adam", "Berek", siajomi, dog, 2000.0, 20000.0, 10000.0);
+        Human Adam = new Human("Adam", "Berek", siajomi, dog, 200000.0, 20000.0, 10000.0);
         Human Damian = new Human("Damian", "Serek", siajomi, moose, 100000.0, 3000.0, 2000.0);
         System.out.println("\n \n");
         Damian.setCar(0, passeratti);
         Adam.setCar(1, zentorno);
-        Adam.setCar(0, bentley);
+//        Adam.setCar(0, bentley);
         passeratti.Sell(Damian, Adam, 20000.0);
-
-        Adam.showCars();
-        bentley.refuel(20.0);
-        zentorno.refuel(10.0);
-        passeratti.refuel(5.0);
+        passeratti.getNumberOfSales();
+        passeratti.transactionHistory();
+        passeratti.Sell(Adam, Damian, 20000.0);
+        passeratti.transactionHistory();
+//        Adam.showCars();
+//        bentley.refuel(20.0);
+//        zentorno.refuel(10.0);
+//        passeratti.refuel(5.0);
 //        me.showCars();
 //        me.sortCar();
 //        me.showCars();
 //        System.out.println("My car is: " + me.getCar(1).model);
         me.getSalary();
-        me.garageCarsValue();
+//        me.garageCarsValue();
         System.out.println("\n \n");
-
+        passeratti.showOwnerList();
 //        Car a1 = new Car("Passeratti", "Volkswagen", 2.1, 2012, "Green");
 //        Car a2 = new Car("Passeratti", "Volkswagen", 2.1, 2012, "Green");
 
@@ -63,7 +66,7 @@ public class Main {
 //        System.out.println(Adam);
 //        System.out.println(dog);
         siajomi.turnOn();
-
+//        Adam.showCars();
 //        a1.turnOn();
 //        me.pet.feed();
 //        me.pet.feed();

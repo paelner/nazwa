@@ -12,7 +12,7 @@ import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 public class Human implements Saleable, Comparator<Car> {
 
     public String firstName;
-    String lastName;
+    public String lastName;
     Phone phone;
     Animal pet;
     private Double cash = 0.0;
@@ -33,6 +33,13 @@ public class Human implements Saleable, Comparator<Car> {
 
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 
     public void setSalary(Double salary) {
         if (salary >= 0) {
@@ -45,14 +52,19 @@ public class Human implements Saleable, Comparator<Car> {
 //I i
 
     public Car getCar(Integer parkingSpaceNumber) {
-
+        if (garage[parkingSpaceNumber] != null) {
+            garage[parkingSpaceNumber].sellerParking = parkingSpaceNumber;
+        }
         return garage[parkingSpaceNumber];
 
     }
 
 
     public void setCar(Integer parkingSpaceNumber, Car car) {
-
+        if (car != null) {
+            car.numberOfOwners++;
+            car.listOfOwners.add(this);
+        }
         garage[parkingSpaceNumber] = car;
     }
 
@@ -121,6 +133,7 @@ public class Human implements Saleable, Comparator<Car> {
     }
 
     public void showCars() {
+        System.out.println(firstName + " " + lastName + ": ");
         for (Car c : garage)
             System.out.println(c);
     }

@@ -3,17 +3,19 @@ package com.company.devices;
 import com.company.Human;
 import com.company.Saleable;
 
+import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Scanner;
+import java.util.List;
+
 
 public abstract class Car extends Device implements Saleable, Comparator<Car> {
 
     public final Double engineCapacity;
     public final String color;
-
-    Scanner scan = new Scanner(System.in);
-    int buyerParking = 0;
-    int sellerParking;
+    public List<Human> listOfOwners = new ArrayList<>();
+    public int numberOfOwners = 0;
+    public int numberOfSales = 0;
+    public int sellerParking;
 
     public Car(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
         this.model = model;
@@ -58,36 +60,57 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
     @Override
     public void Sell(Human seller, Human buyer, Double prize) throws Exception {
 
-        if (seller.getCar(sellerParking) != this)
-            throw new Exception("Te miejsce jest puste");
-
-
         if (buyer.getCash() >= prize && seller.getCar(sellerParking) == this) {
 
             seller.setCash(seller.getCash() + prize);
             buyer.setCash(buyer.getCash() - prize);
+            numberOfSales++;
 
-
-            while (buyer.getCar(buyerParking) != null) {
-                if (buyer.getCar(buyerParking) == null) {
+            for (int i = 0; i < buyer.garage.length; i++) {
+                if (buyer.getCar(i) == null) {
+                    buyer.setCar(i, seller.getCar(sellerParking));
+                    seller.setCar(sellerParking, null);
+                    System.out.println(
+                            "Transakcja przebiegła pomyślnie " + "\n" +
+                                    "Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" +
+                                    "Current cash of " + seller.firstName + " is now: " + seller.getCash());
                     break;
                 }
-                if ((buyer.garage.length - 1) == buyerParking && buyer.getCar(buyer.garage.length - 1) != null) {
+                if ((buyer.garage.length - 1) == i && buyer.getCar(buyer.garage.length - 1) != null) {
                     throw new Exception("Wszystkie miejsca parkingowe są zajęte");
                 }
-                buyerParking = buyerParking + 1;
-            }
-            if (buyer.getCar(buyerParking) == null) {
-                buyer.setCar(buyerParking, this);
-                seller.setCar(sellerParking, null);
-                System.out.println(
-                        "Transakcja przebiegła pomyślnie " + "\n" +
-                                "Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" +
-                                "Current cash of " + seller.firstName + " is now: " + seller.getCash());
             }
         } else throw new
                 Exception(buyer.firstName + " nie ma tyle pieniędzy");
     }
+
+
+    public List<Human> showOwnerList() {
+        if (listOfOwners.size() == 0) {
+            System.out.println("The car did not yet have an owner");
+        } else
+            System.out.println(listOfOwners.get(0).firstName);
+        return listOfOwners;
+    }
+
+    public void transactionHistory() {
+        if (listOfOwners.size() == 0) {
+            System.out.println("No transactions have been made on this car yet");
+        } else {
+            System.out.println("History of the car: ");
+            for (int i = 0; i < listOfOwners.size() - 1; i++) {
+                System.out.println(i + 1 + " :" + listOfOwners.get(i).getFirstName() + " SOLD CAR TO " + listOfOwners.get(i + 1).getFirstName());
+            }
+        }
+    }
+
+
+    public int getNumberOfSales() {
+        System.out.println("Number of Sales: " + numberOfSales);
+        return numberOfSales;
+
+    }
+
 
     public static class Electric extends Car {
 
@@ -164,6 +187,7 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
         public LPG(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
             super(model, producer, engineCapacity, yearOFProduction, color, value);
         }
+
 
         @Override
         public void refuel(Double gas) {
