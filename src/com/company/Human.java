@@ -25,6 +25,7 @@ public class Human implements Saleable, Comparator<Car> {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
+        this.phone.Owner = this;
         this.pet = pet;
         this.cash = cash;
         this.lastSalary = lastSalary;
@@ -86,6 +87,7 @@ public class Human implements Saleable, Comparator<Car> {
 
     public void setPhone(Phone phone) {
         this.phone = phone;
+        this.phone.Owner = this;
     }
 
     public Animal getPet() {

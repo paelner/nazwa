@@ -1,50 +1,74 @@
 package com.company;
 
 import com.company.creatures.Animal;
+import com.company.devices.Application;
 import com.company.devices.Car;
 import com.company.devices.Phone;
-
-import java.util.Arrays;
 
 public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        Phone iphone11 = new Phone("iphone 11", " apple", 6.1, 2019, "White", 2.100);
+//        Phone iphone11 = new Phone("iphone 11", " apple", 6.1, 2019, "White", 2.100);
         Phone siajomi = new Phone("redmi note 8", "xiaomi", 6.53, 2019, "Black", 2.000);
         Car.Electric passeratti = new Car.Electric("Passeratti", "Volkswagen", 2.0, 2012, "Green", 23000.0);
         Animal.Pet moose = new Animal.Pet("moose", Animal.DEFAULT_MOOSE_WEIGHT, "Kłębek");
         Human me = new Human("Paweł", "Nerkowski", siajomi, moose, 10000.0, 10000.0, 10000.0);
-        Car.Diesel bentley = new Car.Diesel("Mulsanne", "Bentley", 6.8, 2020, "Orange", 1000.0);
+//        Car.Diesel bentley = new Car.Diesel("Mulsanne", "Bentley", 6.8, 2020, "Orange", 1000.0);
         Animal.Pet dog = new Animal.Pet("dog", Animal.DEFAULT_DOG_WEIGHT, "Akita");
         Animal.FarmAnimal cow = new Animal.FarmAnimal("cow", 200.0, "Krasula");
-        Car.LPG zentorno = new Car.LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
+
+//        Car.LPG zentorno = new Car.LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
 //        me.setSalary(-1000.0);
 //        me.setSalary(20000.0);
-        String[] apps = {"d&d", "chess", "sudoku"};
-        System.out.println(Arrays.toString(apps));
-        Arrays.sort(apps);
-        System.out.println(Arrays.toString(apps));
-        System.out.println();
-        Integer[] numbers = {10, 90, 0, -340};
-        System.out.println(Arrays.toString(numbers));
-        Arrays.sort(numbers);
-        System.out.println(Arrays.toString(numbers));
-        me.phone.installAnApp(apps);
+//        String[] apps = {"d&d", "chess", "sudoku"};
+//        System.out.println(Arrays.toString(apps));
+//        Arrays.sort(apps);
+//        System.out.println(Arrays.toString(apps));
+//        System.out.println();
+//        Integer[] numbers = {10, 90, 0, -340};
+//        System.out.println(Arrays.toString(numbers));
+//        Arrays.sort(numbers);
+//        System.out.println(Arrays.toString(numbers));
+
+        Application Sudoku = new Application("Sudoku", 1.0, 120.0);
+        Application TFT = new Application("Teamfight Tactics", 1.2, 0.0);
+        Application TribalWars = new Application("Tribal Wars", 3.0, 10.0);
+        Application Pyszne = new Application("Pysznepl", 1.2, 0.0);
+        me.getPhone();
+        me.getPhone().appIsInstalled(Sudoku);
+        me.getPhone().appIsInstalled(TribalWars);
+//        installAnApp(Sudoku);
+//        installAnApp(TFT);
+        me.getPhone().sum_Of_APP_Values();
+
+        me.getPhone().installAnApp(TribalWars);
+        me.getPhone().installAnApp(TFT);
+        me.getPhone().installAnApp(Sudoku);
+        me.getPhone().installAnApp(Pyszne);
+        me.getPhone().appIsInstalled(Sudoku);
+        me.getPhone().appIsInstalled(TribalWars);
+
+        me.getPhone().showFreeApps();
+//        me.getPhone().showAppsByPrice();
+        System.out.println("\n");
+//        me.getPhone().showAppsAlphabetically();
+
+
 //        me.setCar(1,zentorno);
 //        me.setCar(0, bentley);
 //        me.setCar(2,passeratti);
         Human Adam = new Human("Adam", "Berek", siajomi, dog, 200000.0, 20000.0, 10000.0);
         Human Damian = new Human("Damian", "Serek", siajomi, moose, 100000.0, 3000.0, 2000.0);
         System.out.println("\n \n");
-        Damian.setCar(0, passeratti);
-        Adam.setCar(1, zentorno);
+//        Damian.setCar(0, passeratti);
+//        Adam.setCar(1, zentorno);
 //        Adam.setCar(0, bentley);
-        passeratti.Sell(Damian, Adam, 20000.0);
-        passeratti.getNumberOfSales();
-        passeratti.transactionHistory();
-        passeratti.Sell(Adam, Damian, 20000.0);
-        passeratti.transactionHistory();
+//        passeratti.Sell(Damian, Adam, 20000.0);
+//        passeratti.getNumberOfSales();
+//        passeratti.transactionHistory();
+//        passeratti.Sell(Adam, Damian, 20000.0);
+//        passeratti.transactionHistory();
 //        Adam.showCars();
 //        bentley.refuel(20.0);
 //        zentorno.refuel(10.0);
@@ -53,10 +77,10 @@ public class Main {
 //        me.sortCar();
 //        me.showCars();
 //        System.out.println("My car is: " + me.getCar(1).model);
-        me.getSalary();
+//        me.getSalary();
 //        me.garageCarsValue();
-        System.out.println("\n \n");
-        passeratti.showOwnerList();
+//        System.out.println("\n \n");
+//        passeratti.showOwnerList();
 //        Car a1 = new Car("Passeratti", "Volkswagen", 2.1, 2012, "Green");
 //        Car a2 = new Car("Passeratti", "Volkswagen", 2.1, 2012, "Green");
 
@@ -65,7 +89,7 @@ public class Main {
 //        System.out.println(siajomi);
 //        System.out.println(Adam);
 //        System.out.println(dog);
-        siajomi.turnOn();
+//        siajomi.turnOn();
 //        Adam.showCars();
 //        a1.turnOn();
 //        me.pet.feed();
@@ -91,9 +115,9 @@ public class Main {
 //        me.pet.feed();
 //        me.pet.feed();
 //        me.pet.feed();
-        moose.feed(10.0);
-        cow.feed();
-        cow.beEaten();
+//        moose.feed(10.0);
+//        cow.feed();
+//        cow.beEaten();
 //        Adam.getSalary();
 //        Adam.Sell(Adam, me, 200.0);
 //        iphone11.Sell(Damian, Adam, 2000.0);
