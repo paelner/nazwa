@@ -9,6 +9,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
+        double z = 10;
 //        Phone iphone11 = new Phone("iphone 11", " apple", 6.1, 2019, "White", 2.100);
         Phone siajomi = new Phone("redmi note 8", "xiaomi", 6.53, 2019, "Black", 2.000);
         Car.Electric passeratti = new Car.Electric("Passeratti", "Volkswagen", 2.0, 2012, "Green", 23000.0);
@@ -17,7 +18,9 @@ public class Main {
 //        Car.Diesel bentley = new Car.Diesel("Mulsanne", "Bentley", 6.8, 2020, "Orange", 1000.0);
         Animal.Pet dog = new Animal.Pet("dog", Animal.DEFAULT_DOG_WEIGHT, "Akita");
         Animal.FarmAnimal cow = new Animal.FarmAnimal("cow", 200.0, "Krasula");
-
+        Animal.FarmAnimal xd = new Animal.FarmAnimal("xd", z, "hehe");
+        System.out.println(xd);
+//        Animal.Pet.FarmAnimal xd1 []=
 //        Car.LPG zentorno = new Car.LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
 //        me.setSalary(-1000.0);
 //        me.setSalary(20000.0);
@@ -35,7 +38,7 @@ public class Main {
         Application TFT = new Application("Teamfight Tactics", 1.2, 0.0);
         Application TribalWars = new Application("Tribal Wars", 3.0, 10.0);
         Application Pyszne = new Application("Pysznepl", 1.2, 0.0);
-        me.getPhone();
+//        me.getPhone();
         me.getPhone().appIsInstalled(Sudoku);
         me.getPhone().appIsInstalled(TribalWars);
 //        installAnApp(Sudoku);
@@ -48,8 +51,9 @@ public class Main {
         me.getPhone().installAnApp(Pyszne);
         me.getPhone().appIsInstalled(Sudoku);
         me.getPhone().appIsInstalled(TribalWars);
-
-        me.getPhone().showFreeApps();
+        me.setSalary(100.0);
+        me.getSalary();
+//        me.getPhone().showFreeApps();
 //        me.getPhone().showAppsByPrice();
         System.out.println("\n");
 //        me.getPhone().showAppsAlphabetically();
@@ -72,7 +76,7 @@ public class Main {
 //        Adam.showCars();
 //        bentley.refuel(20.0);
 //        zentorno.refuel(10.0);
-//        passeratti.refuel(5.0);
+        passeratti.refuel(5.0);
 //        me.showCars();
 //        me.sortCar();
 //        me.showCars();
@@ -81,10 +85,13 @@ public class Main {
 //        me.garageCarsValue();
 //        System.out.println("\n \n");
 //        passeratti.showOwnerList();
-//        Car a1 = new Car("Passeratti", "Volkswagen", 2.1, 2012, "Green");
-//        Car a2 = new Car("Passeratti", "Volkswagen", 2.1, 2012, "Green");
+        Car.Electric a1 = new Car.Electric("Passeratti", "Volkswagen", 2.1, 2012, "Green", 100.0);
+        Car.Electric a2 = new Car.Electric("Passeratti", "Volkswagen", 2.1, 2012, "Green", 100.0);
 
-//        System.out.println(a1.equals(a2));
+
+        System.out.println(a1.equals(a2));
+        System.out.println();
+
 //        System.out.println(a1);
 //        System.out.println(siajomi);
 //        System.out.println(Adam);

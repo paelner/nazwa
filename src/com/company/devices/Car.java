@@ -140,7 +140,8 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
         }
         if (object instanceof Car) {
             Car o = (Car) object;
-            if (model.equals(o.model) && producer.equals(o.producer) && engineCapacity.equals(o.engineCapacity) && yearOfProduction.equals(o.yearOfProduction) && color.equals(o.color) && value.equals(o.value)) {
+            if (model.equals(o.model) && producer.equals(o.producer) && engineCapacity.equals(o.engineCapacity) && yearOfProduction.equals(o.yearOfProduction)
+                    && color.equals(o.color) && value.equals(o.value)) {
                 return true;
             } else {
                 return false;
@@ -172,6 +173,7 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
 
         public Diesel(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
             super(model, producer, engineCapacity, yearOFProduction, color, value);
+
         }
 
         @Override

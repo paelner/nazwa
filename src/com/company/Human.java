@@ -21,6 +21,7 @@ public class Human implements Saleable, Comparator<Car> {
     public static final Integer DEFAULT_PARKING_SPACE = 2;
     public Car[] garage;
 
+
     public Human(String firstName, String lastName, Phone phone, Animal pet, Double cash, Double lastSalary, Double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,14 +44,19 @@ public class Human implements Saleable, Comparator<Car> {
     }
 
     public void setSalary(Double salary) {
-        if (salary >= 0) {
+
+
+        if (salary > 0) {
+            System.out.println("New salary is now accounted in the accounting system");
+            System.out.println("You need to pick up the annex to the contract from Mrs. Hania from human resources ");
+            System.out.println("ZUS and US knows about your new salary, it makes no sense to hide the income");
             this.lastSalary = this.salary;
             this.salary = salary;
+
         } else
             System.out.println("You cannot put negative values here");
     }
 
-//I i
 
     public Car getCar(Integer parkingSpaceNumber) {
         if (garage[parkingSpaceNumber] != null) {

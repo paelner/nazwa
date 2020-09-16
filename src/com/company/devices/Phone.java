@@ -54,20 +54,20 @@ public class Phone extends Device implements Saleable {
         } else System.out.println("Ta aplikacja nie jest zainstalowana");
     }
 
-    public void showFreeApps() {
-        Iterator<Application> it = setApplication.iterator();
-//        List <Application> freeApps = new ArrayList<Application>(setApplication);
-//        Collections.sort(freeApps);
-        System.out.println("Darmowe aplikacje: ");
-        if (setApplication.iterator().next().priceApplication == 0.0) {
-            System.out.println(setApplication.iterator().next().nameApplication);
-            while (it.hasNext()) {
-                if (it.next().priceApplication == 0.0) {
-                    System.out.println(it.next().nameApplication);
-                }
-            }
-        }
-    }
+//    public void showFreeApps() {
+//        Iterator<Application> it = setApplication.iterator();
+////        List <Application> freeApps = new ArrayList<Application>(setApplication);
+////        Collections.sort(freeApps);
+//        System.out.println("Darmowe aplikacje: ");
+//        if (setApplication.iterator().next().priceApplication == 0.0) {
+//            System.out.println(setApplication.iterator().next().nameApplication);
+//            while (it.hasNext()) {
+//                if (it.next().priceApplication == 0.0) {
+//                    System.out.println(it.next().nameApplication);
+//                }
+//            }
+//        }
+//    }
 
     public double sum_Of_APP_Values() {
         double value = 0;
@@ -105,7 +105,7 @@ public class Phone extends Device implements Saleable {
 //            this.installAnApp(name);
 //        }
 //    }
-//
+
 //    public void installAnApp(String name) throws Exception {
 //        System.out.println("instalowanie aplikacji na podstawie nazwy");
 //        if (name.equals("")) {
@@ -113,14 +113,14 @@ public class Phone extends Device implements Saleable {
 //        }
 //        this.installAnApp(name, "latest");
 //    }
-//
+
 //    public void installAnApp(String name, String version) throws MalformedURLException {
 //        System.out.println("instalowanie aplikacji na podstawie nazwy i wersji");
 //
 //        URL url = new URL(DEFAULT_APP_PROTOCOL, DEFAULT_APP_SERVER, DEFAULT_PORT_NUMBER, name + "-" + version);
 //        this.installAnApp(url);
 //    }
-//
+
 //    public void installAnApp(URL url) {
 //        System.out.println("instalowanie aplikacji na podstawie url");
 //
