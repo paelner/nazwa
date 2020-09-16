@@ -59,29 +59,31 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
 
     @Override
     public void Sell(Human seller, Human buyer, Double prize) throws Exception {
+        if (seller.getCar(sellerParking) == this) {
+            if (buyer.getCash() >= prize) {
 
-        if (buyer.getCash() >= prize && seller.getCar(sellerParking) == this) {
+                seller.setCash(seller.getCash() + prize);
+                buyer.setCash(buyer.getCash() - prize);
+                numberOfSales++;
 
-            seller.setCash(seller.getCash() + prize);
-            buyer.setCash(buyer.getCash() - prize);
-            numberOfSales++;
-
-            for (int i = 0; i < buyer.garage.length; i++) {
-                if (buyer.getCar(i) == null) {
-                    buyer.setCar(i, seller.getCar(sellerParking));
-                    seller.setCar(sellerParking, null);
-                    System.out.println(
-                            "Transakcja przebiegła pomyślnie " + "\n" +
-                                    "Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" +
-                                    "Current cash of " + seller.firstName + " is now: " + seller.getCash());
-                    break;
+                for (int i = 0; i < buyer.garage.length; i++) {
+                    if (buyer.getCar(i) == null) {
+                        buyer.setCar(i, seller.getCar(sellerParking));
+                        seller.setCar(sellerParking, null);
+                        System.out.println(
+                                "Transaction accepted " + "\n" +
+                                        "Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" +
+                                        "Current cash of " + seller.firstName + " is now: " + seller.getCash());
+                        break;
+                    }
+                    if ((buyer.garage.length - 1) == i && buyer.getCar(buyer.garage.length - 1) != null) {
+                        throw new Exception("All parking spaces are full");
+                    }
                 }
-                if ((buyer.garage.length - 1) == i && buyer.getCar(buyer.garage.length - 1) != null) {
-                    throw new Exception("Wszystkie miejsca parkingowe są zajęte");
-                }
-            }
-        } else throw new
-                Exception(buyer.firstName + " nie ma tyle pieniędzy");
+            } else throw new
+                    Exception(buyer.firstName + " nie ma tyle pieniędzy");
+        } else
+            System.out.println(buyer.firstName + " doesn't have this car");
     }
 
 
@@ -99,7 +101,7 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
         } else {
             System.out.println("History of the car: ");
             for (int i = 0; i < listOfOwners.size() - 1; i++) {
-                System.out.println(i + 1 + " :" + listOfOwners.get(i).getFirstName() + " SOLD CAR TO " + listOfOwners.get(i + 1).getFirstName());
+                System.out.println(i + 1 + ": " + listOfOwners.get(i).getFirstName() + " sold " + this.model + " car to " + listOfOwners.get(i + 1).getFirstName());
             }
         }
     }
@@ -108,7 +110,6 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
     public int getNumberOfSales() {
         System.out.println("Number of Sales: " + numberOfSales);
         return numberOfSales;
-
     }
 
 

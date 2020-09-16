@@ -151,8 +151,13 @@ public class Phone extends Device implements Saleable {
         if (buyer.getCash() >= prize) {
             if (seller.getPhone() == this) {
                 buyer.setPhone(seller.getPhone());
+                System.out.println("Transaction accepted");
+                System.out.println("New owner of " + seller.getPhone().model + " is now " + buyer.getFirstName());
+                seller.setPhone(null);
+
                 seller.setCash(seller.getCash() + prize);
                 buyer.setCash(buyer.getCash() - prize);
+
                 System.out.println("Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" + "Current cash of " + seller.firstName + " is now: " + seller.getCash());
             } else {
                 System.out.println(seller.firstName + " doesn't have this phone ");

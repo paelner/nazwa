@@ -99,6 +99,11 @@ public abstract class Animal implements Saleable, Feedable {
         if (buyer.getCash() >= prize) {
             if (seller.getPet() == this) {
                 buyer.setPet(seller.getPet());
+                System.out.println("Transaction accepted");
+                System.out.println("New owner of " + seller.getPet().species + " is now " + buyer.getFirstName());
+
+                seller.setPet(null);
+
                 seller.setCash(seller.getCash() + prize);
                 buyer.setCash(buyer.getCash() - prize);
                 System.out.println("Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" + "Current cash of " + seller.firstName + " is now: " + seller.getCash());
