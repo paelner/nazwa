@@ -27,7 +27,7 @@ public abstract class Animal implements Saleable, Feedable {
     }
 
 
-    void TakeForAWalk() {
+    void takeForAWalk() {
         weight--;
         if (weight > 0.0) {
             System.out.println("thx for taking me for walk, " + weight + "kg");
@@ -46,43 +46,16 @@ public abstract class Animal implements Saleable, Feedable {
     }
 
     @Override
+    public void feed(Double foodWeight) {
+        setWeight(getWeight() + foodWeight);
+        System.out.println("You feed this animal with " + foodWeight + " of food and it's weight is now: " + getWeight());
+    }
+
+    @Override
     public void feed() {
         System.out.println("You feed this animal ");
     }
 
-
-    public static class Pet extends Animal {
-        public Pet(String species, Double weight, String name) {
-            super(species, weight, name);
-        }
-
-        @Override
-        public void feed(Double foodWeight) {
-            setWeight(getWeight() + foodWeight);
-            System.out.println("You feed this animal with " + foodWeight + " of food and it's weight is now: " + getWeight());
-        }
-
-
-    }
-
-
-    public static class FarmAnimal extends Animal implements Edible {
-        public FarmAnimal(String species, Double weight, String name) {
-            super(species, weight, name);
-
-        }
-
-        @Override
-        public void beEaten() {
-            System.out.println("This FarmAnimal can be eaten ");
-        }
-
-        @Override
-        public void feed(Double foodWeight) {
-            setWeight(getWeight() + foodWeight);
-            System.out.println("You feed this animal with " + foodWeight + " of food and it's weight is now: " + getWeight());
-        }
-    }
 
     @Override
     public String toString() {

@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.creatures.Animal;
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -12,11 +14,11 @@ public class Main {
 //        Phone iphone11 = new Phone("iphone 11", " apple", 6.1, 2019, "White", 2.100);
         Phone siajomi = new Phone("redmi note 8", "xiaomi", 6.53, 2019, "Black", 2.000);
         Car.Electric passeratti = new Car.Electric("Passeratti", "Volkswagen", 2.0, 2012, "Green", 23000.0);
-        Animal.Pet moose = new Animal.Pet("moose", Animal.DEFAULT_MOOSE_WEIGHT, "Kłębek");
+        Pet moose = new Pet("moose", Animal.DEFAULT_MOOSE_WEIGHT, "Kłębek");
         Human me = new Human("Paweł", "Nerkowski", siajomi, moose, 10000.0, 10000.0, 10000.0);
         Car.Diesel bentley = new Car.Diesel("Mulsanne", "Bentley", 6.8, 2020, "Orange", 1000.0);
-        Animal.Pet dog = new Animal.Pet("dog", Animal.DEFAULT_DOG_WEIGHT, "Akita");
-        Animal.FarmAnimal cow = new Animal.FarmAnimal("cow", 200.0, "Krasula");
+        Pet dog = new Pet("dog", Animal.DEFAULT_DOG_WEIGHT, "Akita");
+        FarmAnimal cow = new FarmAnimal("cow", 200.0, "Krasula");
 
 //
         Car.LPG zentorno = new Car.LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
@@ -63,25 +65,31 @@ public class Main {
         Human Adam = new Human("Adam", "Berek", siajomi, null, 200000.0, 20000.0, 10000.0);
         Human Damian = new Human("Damian", "Serek", null, moose, 100000.0, 3000.0, 2000.0);
 
-        System.out.println("\n \n");
-        Damian.setCar(0, passeratti);
-        Adam.setCar(1, zentorno);
+//        System.out.println("\n \n");
+//        Damian.setCar(0, passeratti);
+//        Adam.setCar(1, zentorno);
 //        Adam.setCar(0, bentley);
-        passeratti.Sell(Adam, Damian, 20.0);
+//        passeratti.Sell(Adam, Damian, 20.0);
         System.out.println("\n");
-        passeratti.Sell(Damian, Adam, 20000.0);
+//        passeratti.Sell(Damian, Adam, 20000.0);
 //        passeratti.getNumberOfSales();
 //        passeratti.transactionHistory();
-        passeratti.Sell(Adam, Damian, 20000.0);
+//        passeratti.Sell(Adam, Damian, 20000.0);
         System.out.println("\n");
 //        passeratti.transactionHistory();
 //        passeratti.getNumberOfSales();
         System.out.println("\n");
 
-        siajomi.Sell(Adam, Damian, 1000.0);
-        moose.Sell(Damian, Adam, 200.0);
+//        siajomi.Sell(Adam, Damian, 1000.0);
+//        moose.Sell(Damian, Adam, 200.0);
+        cow.beEaten();
+        cow.feed(10.);
+        cow.feed();
 
-        Adam.Sell(me, Damian, 100.0);
+        moose.feed();
+        moose.feed(10.);
+
+//        Adam.Sell(me, Damian, 100.0);
 //        Adam.showCars();
 //        bentley.refuel(20.0);
 //        zentorno.refuel(10.0);
