@@ -3,7 +3,9 @@ package com.company;
 import com.company.creatures.Animal;
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Pet;
-import com.company.devices.Car;
+import com.company.devices.Diesel;
+import com.company.devices.Electric;
+import com.company.devices.LPG;
 import com.company.devices.Phone;
 
 public class Main {
@@ -13,15 +15,17 @@ public class Main {
         double z = 10;
 //        Phone iphone11 = new Phone("iphone 11", " apple", 6.1, 2019, "White", 2.100);
         Phone siajomi = new Phone("redmi note 8", "xiaomi", 6.53, 2019, "Black", 2.000);
-        Car.Electric passeratti = new Car.Electric("Passeratti", "Volkswagen", 2.0, 2012, "Green", 23000.0);
+        Electric passeratti = new Electric("Passeratti", "Volkswagen", 2.0, 2012, "Green", 23000.0);
         Pet moose = new Pet("moose", Animal.DEFAULT_MOOSE_WEIGHT, "Kłębek");
         Human me = new Human("Paweł", "Nerkowski", siajomi, moose, 10000.0, 10000.0, 10000.0);
-        Car.Diesel bentley = new Car.Diesel("Mulsanne", "Bentley", 6.8, 2020, "Orange", 1000.0);
+        Diesel bentley = new Diesel("Mulsanne", "Bentley", 6.8, 2020, "Orange", 1000.0);
         Pet dog = new Pet("dog", Animal.DEFAULT_DOG_WEIGHT, "Akita");
         FarmAnimal cow = new FarmAnimal("cow", 200.0, "Krasula");
+        LPG zentorno = new LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
 
-//
-        Car.LPG zentorno = new Car.LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
+        zentorno.refuel(1.);
+        passeratti.refuel(2.);
+        bentley.refuel(3.);
 //        me.setSalary(-1000.0);
 //        me.setSalary(20000.0);
 //        String[] apps = {"d&d", "chess", "sudoku"};

@@ -113,22 +113,7 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
     }
 
 
-    public static class Electric extends Car {
 
-        public Electric(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
-            super(model, producer, engineCapacity, yearOFProduction, color, value);
-
-        }
-
-
-        @Override
-        public void refuel(Double charge) {
-
-            System.out.println("Naladowales elektryczny samochod  " + this.model + " o " + charge + " MJ");
-        }
-
-
-    }
 
 
     @Override
@@ -167,37 +152,6 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
     @Override
     public void turnOn() {
         System.out.println("Device " + model + " is turned on");
-
-    }
-
-    public static class Diesel extends Car {
-
-        public Diesel(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
-            super(model, producer, engineCapacity, yearOFProduction, color, value);
-
-        }
-
-        @Override
-        public void refuel(Double fuel) {
-            System.out.println("Napelniles bak samochodu " + this.model + " o " + fuel + " litrow paliwa");
-        }
-
-
-    }
-
-    public static class LPG extends Car {
-
-        public LPG(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
-            super(model, producer, engineCapacity, yearOFProduction, color, value);
-        }
-
-
-        @Override
-        public void refuel(Double gas) {
-
-            System.out.println("Napelniles butle " + this.model + " o " + gas + " litrow gazu");
-        }
-
 
     }
 }
