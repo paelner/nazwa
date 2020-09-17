@@ -59,7 +59,7 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
 
     @Override
     public void Sell(Human seller, Human buyer, Double prize) throws Exception {
-        if (seller.getCar(sellerParking) == this) {
+        if (seller.isOwner(seller.garage, this)) {
             if (buyer.getCash() >= prize) {
 
                 seller.setCash(seller.getCash() + prize);
@@ -81,9 +81,9 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
                     }
                 }
             } else throw new
-                    Exception(buyer.firstName + " nie ma tyle pieniędzy");
-        } else
-            System.out.println(buyer.firstName + " doesn't have this car");
+                    Exception(buyer.firstName + " doesnt have enough money");
+        } else throw new
+                Exception(seller.firstName + " doesn't have this car");
     }
 
 

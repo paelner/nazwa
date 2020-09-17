@@ -23,9 +23,9 @@ public class Main {
         FarmAnimal cow = new FarmAnimal("cow", 200.0, "Krasula");
         LPG zentorno = new LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
 
-        zentorno.refuel(1.);
-        passeratti.refuel(2.);
-        bentley.refuel(3.);
+//        zentorno.refuel(1.);
+//        passeratti.refuel(2.);
+//        bentley.refuel(3.);
 //        me.setSalary(-1000.0);
 //        me.setSalary(20000.0);
 //        String[] apps = {"d&d", "chess", "sudoku"};
@@ -70,11 +70,13 @@ public class Main {
         Human Damian = new Human("Damian", "Serek", null, moose, 100000.0, 3000.0, 2000.0);
 
 //        System.out.println("\n \n");
-//        Damian.setCar(0, passeratti);
-//        Adam.setCar(1, zentorno);
+        Damian.setCar(0, passeratti);
+        Adam.setCar(1, zentorno);
 //        Adam.setCar(0, bentley);
-//        passeratti.Sell(Adam, Damian, 20.0);
+        passeratti.Sell(Damian, Adam, 20.0);
         System.out.println("\n");
+        System.out.println(Damian.getCar(0));
+        System.out.println(Adam.getCar(0) + " " + Adam.getCar(1));
 //        passeratti.Sell(Damian, Adam, 20000.0);
 //        passeratti.getNumberOfSales();
 //        passeratti.transactionHistory();
@@ -82,16 +84,17 @@ public class Main {
         System.out.println("\n");
 //        passeratti.transactionHistory();
 //        passeratti.getNumberOfSales();
+
         System.out.println("\n");
 
 //        siajomi.Sell(Adam, Damian, 1000.0);
 //        moose.Sell(Damian, Adam, 200.0);
-        cow.beEaten();
-        cow.feed(10.);
-        cow.feed();
-
-        moose.feed();
-        moose.feed(10.);
+//        cow.beEaten();
+//        cow.feed(10.);
+//        cow.feed();
+//
+//        moose.feed();
+//        moose.feed(10.);
 
 //        Adam.Sell(me, Damian, 100.0);
 //        Adam.showCars();

@@ -75,6 +75,14 @@ public class Human implements Saleable, Comparator<Car> {
         garage[parkingSpaceNumber] = car;
     }
 
+    public boolean isOwner(Car[] garage, Car car) {
+        for (int i = 0; i <= garage.length - 1; i++) {
+            if (car == this.garage[i])
+                return true;
+        }
+        return false;
+    }
+
     public double garageCarsValue() {
 
         double value = 0;
