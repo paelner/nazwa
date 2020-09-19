@@ -13,8 +13,7 @@ public class Phone extends Device implements Saleable {
     private static final String DEFAULT_APP_PROTOCOL = "HTTPS";
     private static final String DEFAULT_APP_SERVER = "me.appstore.com";
     private static final int DEFAULT_PORT_NUMBER = 443;
-    public HashSet<Application> setApplication = new HashSet<Application>();
-    public Human Owner;
+    public HashSet<Application> installedApplications = new HashSet<Application>();
 
 
     public Phone(String model, String producer, Double screenSize, Integer yearOfProduction, String color, Double value) {
@@ -23,79 +22,117 @@ public class Phone extends Device implements Saleable {
         this.screenSize = screenSize;
         this.yearOfProduction = yearOfProduction;
         this.color = color;
-        this.value = 200.0;
     }
 
-    public void installAnApp(Application application) throws Exception {
-        if (Owner.getCash() >= application.priceApplication) {
-            if (Owner == null)
-                throw new Exception("Telefon nie ma właściciela");
-            setApplication.add(application);
-            Owner.setCash(Owner.getCash() - application.priceApplication);
-        } else System.out.println(Owner.firstName + " nie ma tyle pieniędzy");
+    public Boolean hasThisPhone(Human owner) {
+        if (owner.getPhone() == this) {
+//            System.out.println(owner.firstName +" has this phone");
+            return true;
+        } else
+//            System.out.println(owner.firstName+" doesn't have this phone");
+            return false;
     }
 
-    public void appIsInstalled(Application application) {
-        if (setApplication.contains(application))
-            System.out.println("Ta aplikacja jest zainstalowana");
-        else if (!setApplication.contains(application)) System.out.println("Ta aplikacja nie jest zainstalowana");
+    ;
 
+    public void installAnApp(Human owner, Application application) {
+        if (owner.getCash() >= application.priceApplication) {
+            {
+                if (this.hasThisPhone(owner) == true) {
+                    System.out.println(owner.firstName + " is the owner");
+                    this.installedApplications.add(application);
+                    System.out.println(application.getNameApplication() + " is now installed on " + this.model);
+                    owner.setCash(owner.getCash() - application.priceApplication);
+//                    System.out.println(owner.getCash());
+                } else System.out.println("Phone has no owner");
+                return;
+            }
+        } else System.out.println(owner.firstName + " doesn't have enough money");
     }
 
-    public void appIsInstalled(String applicationName) {
-        Iterator<Application> it = setApplication.iterator();
-        boolean isInstalled = false;
-        while (it.hasNext()) {
-            if (it.next().nameApplication == applicationName)
-                isInstalled = true;
+
+    public Boolean appIsInstalled(Application application) {
+        if (installedApplications.contains(application)) {
+            System.out.println(application.getNameApplication() + " is installed on " + this.model);
+            return true;
         }
-        if (isInstalled == true) {
-            System.out.println("Ta aplikacja jest zainstalowana");
-        } else System.out.println("Ta aplikacja nie jest zainstalowana");
+        System.out.println(application.getNameApplication() + " isn't installed on " + this.model);
+        return false;
     }
 
-//    public void showFreeApps() {
-//        Iterator<Application> it = setApplication.iterator();
-////        List <Application> freeApps = new ArrayList<Application>(setApplication);
-////        Collections.sort(freeApps);
-//        System.out.println("Darmowe aplikacje: ");
-//        if (setApplication.iterator().next().priceApplication == 0.0) {
-//            System.out.println(setApplication.iterator().next().nameApplication);
-//            while (it.hasNext()) {
-//                if (it.next().priceApplication == 0.0) {
-//                    System.out.println(it.next().nameApplication);
-//                }
-//            }
-//        }
-//    }
 
-    public double sum_Of_APP_Values() {
+    public Boolean appIsInstalled(String applicationName) {
+        Iterator<Application> it = installedApplications.iterator();
+        while (it.hasNext()) {
+            boolean installed = false;
+            while (installed == false) {
+                if (it.next().nameApplication.equals(applicationName)) {
+                    System.out.println(applicationName + " is installed");
+                    installed = true;
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
+
+    public void showFreeApps() {
+        Iterator<Application> it = installedApplications.iterator();
+        System.out.println("Free aps: ");
+
+        while (it.hasNext()) {
+            System.out.println(it.next().priceApplication);
+            if (it.next().priceApplication == 0.0) {
+                System.out.println(it.next().nameApplication);
+
+            }
+        }
+    }
+
+    public void allInstalledApps() {
+        Iterator<Application> it = installedApplications.iterator();
+        System.out.println("Installed apps: \n");
+        int n = 1;
+        while (it.hasNext()) {
+            System.out.println(n + " " + it.next().nameApplication);
+            n++;
+        }
+    }
+
+    public double sumOfAppsPrizes() {
         double value = 0;
-        Iterator<Application> it = setApplication.iterator();
+        Iterator<Application> it = installedApplications.iterator();
         while (it.hasNext()) {
             value = value + it.next().priceApplication;
         }
+        System.out.println("Sum of all apps: " + value);
         return value;
     }
 
     public void showAppsAlphabetically() {
-        List<Application> sortList = new ArrayList<>(setApplication);
+        System.out.println("Apps sorted aplhabetically: ");
+        List<Application> sortList = new ArrayList<>(installedApplications);
         Collections.sort(sortList);
-        Iterator<Application> it = setApplication.iterator();
+
+        for (Application installedApplication : installedApplications) {
+            System.out.print(installedApplication.nameApplication + ",   ");
+        }
+    }
+
+    public void showAppsByPrizes() {
+        System.out.println("Apps sorted by prizes: ");
+        List<Application> sortList = new ArrayList<>(installedApplications);
+        sortList.sort(new ApplicationPriceComparator());
+        Iterator<Application> it = installedApplications.iterator();
 
         while (it.hasNext()) {
             System.out.print(it.next().nameApplication + ",   ");
         }
     }
 
-    public void showAppsByPrice() {
-        List<Application> sortList = new ArrayList<>(setApplication);
-        Collections.sort(sortList, new ApplicationPriceComparator());
-        Iterator<Application> it = setApplication.iterator();
-        while (it.hasNext()) {
-            System.out.print(it.next().nameApplication + ",   ");
-        }
-    }
+
 //    public void installAnApp(String[] names) throws Exception {
 //        System.out.println("instalowanie aplikacji na podstawie tablicy nazw");
 //        if (names.length == 0) {

@@ -3,10 +3,7 @@ package com.company;
 import com.company.creatures.Animal;
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Pet;
-import com.company.devices.Diesel;
-import com.company.devices.Electric;
-import com.company.devices.LPG;
-import com.company.devices.Phone;
+import com.company.devices.*;
 
 public class Main {
 
@@ -38,11 +35,43 @@ public class Main {
 //        System.out.println(Arrays.toString(numbers));
 //        Arrays.sort(numbers);
 //        System.out.println(Arrays.toString(numbers));
+        Human Damian = new Human("Damian", "Damianowski", null, null, 0.0, 0.0, 0.0);
+        Application Sudoku = new Application("Sudoku", 1.0, 0.0);
+        Application TFT = new Application("Teamfight Tactics", 1.2, 1.0);
+        Application TribalWars = new Application("Tribal Wars", 3.0, 0.0);
+        Application Pyszne = new Application("Pysznepl", 1.2, 0.0);
+        siajomi.installAnApp(Damian, Sudoku);
+        Damian.setCash(10000.0);
+        siajomi.installAnApp(Damian, Sudoku);
+        siajomi.appIsInstalled(Sudoku);
+        Damian.setPhone(siajomi);
+        System.out.println("\n");
+        siajomi.installAnApp(Damian, Sudoku);
+        siajomi.appIsInstalled(Sudoku);
+        siajomi.appIsInstalled(TribalWars);
+        siajomi.installAnApp(Damian, TFT);
+        siajomi.installAnApp(Damian, Pyszne);
+        siajomi.chceckZero();
 
-//        Application Sudoku = new Application("Sudoku", 1.0, 120.0);
-//        Application TFT = new Application("Teamfight Tactics", 1.2, 0.0);
-//        Application TribalWars = new Application("Tribal Wars", 3.0, 10.0);
-//        Application Pyszne = new Application("Pysznepl", 1.2, 0.0);
+
+//        siajomi.showFreeApps();
+
+        siajomi.showAppsByPrizes();
+
+
+        System.out.println("\n");
+        siajomi.appIsInstalled("Sudoku");
+        System.out.println("\n");
+        siajomi.allInstalledApps();
+        siajomi.sumOfAppsPrizes();
+
+        siajomi.showAppsAlphabetically();
+
+
+//        siajomi.sumOfAppsPrizes();
+        System.out.println("\n");
+
+
 //        me.getPhone();
 //        me.getPhone().appIsInstalled(Sudoku);
 //        me.getPhone().appIsInstalled(TribalWars);
@@ -60,7 +89,7 @@ public class Main {
 //        me.getSalary();
 //        me.getPhone().showFreeApps();
 //        me.getPhone().showAppsByPrice();
-        System.out.println("\n");
+//        System.out.println("\n");
 //        me.getPhone().showAppsAlphabetically();
 
 
@@ -68,21 +97,21 @@ public class Main {
 //        me.setCar(0, bentley);
 //        me.setCar(2,passeratti);
 
-        Human Adam = new Human("Adam", "Berek", siajomi, null, 200000.0, 20000.0, 10000.0);
-        Human Damian = new Human("Damian", "Serek", null, moose, 100000.0, 3000.0, 2000.0);
-        passeratti.isSold(Damian, Adam);
+//        Human Adam = new Human("Adam", "Berek", siajomi, null, 200000.0, 20000.0, 10000.0);
+//        Human Damian = new Human("Damian", "Serek", null, moose, 100000.0, 3000.0, 2000.0);
+//        passeratti.isSold(Damian, Adam);
 
 //        System.out.println("\n \n");
-        Damian.setCar(0, passeratti);
-        Adam.setCar(1, zentorno);
+//        Damian.setCar(0, passeratti);
+//        Adam.setCar(1, zentorno);
 //        Adam.setCar(0, bentley);
-        passeratti.numberOfSales();
-        passeratti.Sell(Damian, Adam, 20.0);
-        passeratti.numberOfSales();
-        passeratti.isSold(Adam, Damian);
-        System.out.println("\n");
-        passeratti.Sell(Adam, Damian, 10.0);
-        passeratti.numberOfSales();
+//        passeratti.numberOfSales();
+//        passeratti.Sell(Damian, Adam, 20.0);
+//        passeratti.numberOfSales();
+//        passeratti.isSold(Adam, Damian);
+//        System.out.println("\n");
+//        passeratti.Sell(Adam, Damian, 10.0);
+//        passeratti.numberOfSales();
 
 //        System.out.println(passeratti.transactions);
 
@@ -92,11 +121,11 @@ public class Main {
 //        passeratti.getNumberOfSales();
 //        passeratti.transactionHistory();
 //        passeratti.Sell(Adam, Damian, 20000.0);
-        System.out.println("\n");
+//        System.out.println("\n");
 //        passeratti.transactionHistory();
 //        passeratti.getNumberOfSales();
 
-        System.out.println("\n");
+//        System.out.println("\n");
 
 //        siajomi.Sell(Adam, Damian, 1000.0);
 //        moose.Sell(Damian, Adam, 200.0);
@@ -117,9 +146,9 @@ public class Main {
 //        me.showCars();
 //        System.out.println("My car is: " + me.getCar(1).model);
 //        me.getSalary();
-        passeratti.alreadyOwned(Damian);
-        passeratti.isSold(Damian, Adam);
-        bentley.isSold(Damian, Adam);
+//        passeratti.alreadyOwned(Damian);
+//        passeratti.isSold(Damian, Adam);
+//        bentley.isSold(Damian, Adam);
 //        me.garageCarsValue();ric("Passeratti", "Volkswagen", 2.1, 2012, "Green", 100.0);
 ////        Car.Electric a2 = new Car.Electric("Passeratti", "Volkswagen", 2.1, 2012, "Green", 100.0);
 ////
