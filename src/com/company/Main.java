@@ -23,6 +23,7 @@ public class Main {
         FarmAnimal cow = new FarmAnimal("cow", 200.0, "Krasula");
         LPG zentorno = new LPG("zentorno", "Pegassi", 6.0, 2005, "Blue", 2000.0);
 
+
 //        zentorno.refuel(1.);
 //        passeratti.refuel(2.);
 //        bentley.refuel(3.);
@@ -66,17 +67,27 @@ public class Main {
 //        me.setCar(1,zentorno);
 //        me.setCar(0, bentley);
 //        me.setCar(2,passeratti);
+
         Human Adam = new Human("Adam", "Berek", siajomi, null, 200000.0, 20000.0, 10000.0);
         Human Damian = new Human("Damian", "Serek", null, moose, 100000.0, 3000.0, 2000.0);
+        passeratti.isSold(Damian, Adam);
 
 //        System.out.println("\n \n");
         Damian.setCar(0, passeratti);
         Adam.setCar(1, zentorno);
 //        Adam.setCar(0, bentley);
+        passeratti.numberOfSales();
         passeratti.Sell(Damian, Adam, 20.0);
+        passeratti.numberOfSales();
+        passeratti.isSold(Adam, Damian);
         System.out.println("\n");
-        System.out.println(Damian.getCar(0));
-        System.out.println(Adam.getCar(0) + " " + Adam.getCar(1));
+        passeratti.Sell(Adam, Damian, 10.0);
+        passeratti.numberOfSales();
+
+//        System.out.println(passeratti.transactions);
+
+//        System.out.println(Damian.getCar(0));
+//        System.out.println(Adam.getCar(0) + " " + Adam.getCar(1));
 //        passeratti.Sell(Damian, Adam, 20000.0);
 //        passeratti.getNumberOfSales();
 //        passeratti.transactionHistory();
@@ -106,6 +117,9 @@ public class Main {
 //        me.showCars();
 //        System.out.println("My car is: " + me.getCar(1).model);
 //        me.getSalary();
+        passeratti.alreadyOwned(Damian);
+        passeratti.isSold(Damian, Adam);
+        bentley.isSold(Damian, Adam);
 //        me.garageCarsValue();ric("Passeratti", "Volkswagen", 2.1, 2012, "Green", 100.0);
 ////        Car.Electric a2 = new Car.Electric("Passeratti", "Volkswagen", 2.1, 2012, "Green", 100.0);
 ////

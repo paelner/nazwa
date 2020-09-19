@@ -12,10 +12,9 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
 
     public final Double engineCapacity;
     public final String color;
-    public List<Human> listOfOwners = new ArrayList<>();
-    public int numberOfOwners = 0;
-    public int numberOfSales = 0;
+    public List<Human> owners = new ArrayList<>();
     public int sellerParking;
+
 
     public Car(String model, String producer, Double engineCapacity, Integer yearOFProduction, String color, Double value) {
         this.model = model;
@@ -59,18 +58,22 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
 
     @Override
     public void Sell(Human seller, Human buyer, Double prize) throws Exception {
+        this.value = prize;
+
         if (seller.isOwner(seller.garage, this)) {
             if (buyer.getCash() >= prize) {
-
-                seller.setCash(seller.getCash() + prize);
-                buyer.setCash(buyer.getCash() - prize);
-                numberOfSales++;
-
                 for (int i = 0; i < buyer.garage.length; i++) {
                     if (buyer.getCar(i) == null) {
+//                        transactions.add(seller);
+//                        transactions.add(buyer);
                         buyer.setCar(i, seller.getCar(sellerParking));
                         seller.setCar(sellerParking, null);
+                        seller.setCash(seller.getCash() + prize);
+                        buyer.setCash(buyer.getCash() - prize);
+
+//                        retailPrize.add(prize);
                         System.out.println(
+
                                 "Transaction accepted " + "\n" +
                                         "Current cash of " + buyer.firstName + " is now: " + buyer.getCash() + "\n" +
                                         "Current cash of " + seller.firstName + " is now: " + seller.getCash());
@@ -80,40 +83,40 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
                         throw new Exception("All parking spaces are full");
                     }
                 }
+
             } else throw new
-                    Exception(buyer.firstName + " doesnt have enough money");
+                    Exception(buyer.firstName + " doesn't have enough money");
         } else throw new
                 Exception(seller.firstName + " doesn't have this car");
     }
 
-
-    public List<Human> showOwnerList() {
-        if (listOfOwners.size() == 0) {
-            System.out.println("The car did not yet have an owner");
-        } else
-            System.out.println(listOfOwners.get(0).firstName);
-        return listOfOwners;
+    public boolean alreadyOwned(Human firstOwner) {
+        if (this.owners.contains(firstOwner)) {
+            System.out.println(this.model + " was already owned by " + firstOwner.firstName);
+            return true;
+        }
+        System.out.println(this.model + " wasn't owned by " + firstOwner.firstName);
+        return false;
     }
 
-    public void transactionHistory() {
-        if (listOfOwners.size() == 0) {
-            System.out.println("No transactions have been made on this car yet");
-        } else {
-            System.out.println("History of the car: ");
-            for (int i = 0; i < listOfOwners.size() - 1; i++) {
-                System.out.println(i + 1 + ": " + listOfOwners.get(i).getFirstName() + " sold " + this.model + " car to " + listOfOwners.get(i + 1).getFirstName());
+
+    public void isSold(Human seller, Human buyer) {
+        if (alreadyOwned(seller) && alreadyOwned(buyer)) {
+            int sellerPosition = 0;
+            int buyerPosition = 0;
+            sellerPosition = this.owners.indexOf(seller);
+            buyerPosition = this.owners.indexOf(buyer);
+            if (sellerPosition + 1 == buyerPosition) {
+                System.out.println(this.model + " was sold by " + seller.firstName + " to " + buyer.firstName);
+                return;
             }
+            System.out.println(this.model + " wasn't sold by " + seller.firstName + " to " + buyer.firstName);
         }
     }
 
-
-    public int getNumberOfSales() {
-        System.out.println("Number of Sales: " + numberOfSales);
-        return numberOfSales;
+    public void numberOfSales() {
+        System.out.println("Number of Sales of " + this.model + ": " + (owners.size() - 1));
     }
-
-
-
 
 
     @Override
@@ -148,6 +151,7 @@ public abstract class Car extends Device implements Saleable, Comparator<Car> {
         result = 31 * result + value.hashCode();
         return result;
     }
+
 
     @Override
     public void turnOn() {

@@ -69,11 +69,13 @@ public class Human implements Saleable, Comparator<Car> {
 
     public void setCar(Integer parkingSpaceNumber, Car car) {
         if (car != null) {
-            car.numberOfOwners++;
-            car.listOfOwners.add(this);
+//            car.numberOfOwners++;
+            car.owners.add(this);
+//            car.transactions.add(this);
         }
         garage[parkingSpaceNumber] = car;
     }
+
 
     public boolean isOwner(Car[] garage, Car car) {
         for (int i = 0; i <= garage.length - 1; i++) {
